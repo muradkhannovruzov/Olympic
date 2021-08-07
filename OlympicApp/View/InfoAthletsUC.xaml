@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="OlympicApp.View.InfoAthletsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OlympicApp.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <ScrollViewer>
+        <StackPanel>
+            <Grid Width="auto" Height="300">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.Background>
+                    <ImageBrush  ImageSource="F:\GitHub\Olympic\OlympicApp\Image\Background\bg4.jpg"
+                            Stretch="UniformToFill"/>
+                </Grid.Background>
+
+
+
+                <Grid Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Border Height="170" Width="170"
+                                CornerRadius="100" Margin="5,5,5,0" 
+                                Grid.Row="0">
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding Athlet.ImagePath}" />
+                            </Border.Background>
+                        </Border>
+
+                        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Content="{Binding Athlet.Name}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                            <Label Content="{Binding Athlet.SurName}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                        </WrapPanel>
+
+                        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="{Binding Athlet.FlagPath}" Width="35" Height="17" 
+                               VerticalAlignment="Center"
+                               />
+                            <Label Content="{Binding Athlet.Country.ShortName}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </WrapPanel>
+
+                        <WrapPanel Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                            <Border Background="Gold" CornerRadius="27" 
+                                    Width="27" Margin="30,2,10,2"
+                                    Height="27">
+                                <Label Content="{Binding Athlet.Gold}" FontSize="14" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"/>
+                            </Border>
+
+                            <Border Background="Silver" CornerRadius="27" Width="27" Height="27"
+                                    Margin="5,2,10,2">
+                                <Label Content="{Binding Athlet.Silver}" FontSize="14" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"/>
+                            </Border>
+
+                            <Border Background="SandyBrown" CornerRadius="27" Width="27" Height="27"
+                                    Margin="5,2,10,2">
+                                <Label Content="{Binding Athlet.Bronze}" FontSize="14" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"/>
+                            </Border>
+                        </WrapPanel>
+
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+            <Grid Background="#FFB22234" Height="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+                    <Label Content="SPORT" FontSize="20" 
+                           Foreground="#FFCE7480" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content="{Binding Athlet.Sport.Name}" FontSize="24" 
+                           Foreground="White" 
+                           FontWeight="Bold"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+                    <Label Content="COUNTRY" FontSize="20" 
+                           Foreground="#FFCE7480" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content="{Binding Athlet.Country.Name}" FontSize="24" 
+                           Foreground="White" 
+                           FontWeight="Bold"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+                    <Label Content="BORN" FontSize="20" 
+                           Foreground="#FFCE7480" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content="{Binding Athlet.BirthDay.Date}" FontSize="24" 
+                           Foreground="White" 
+                           FontWeight="Bold"/>
+
+                </StackPanel>
+
+            </Grid>
+            <Label Content="RESULTS" FontSize="26" FontWeight="Bold" Margin="15,30,5,20" VerticalAlignment="Center"/>
+            <ListBox Height="250"
+                     ItemsSource="{Binding Athlet.Medals}"
+                     >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="{Binding MedalType.Type}" Grid.Column="0" FontSize="16" Margin="5,0,5,0"/>
+                            <Label Content="{Binding SportCathegory.Name}" Grid.Column="1" Margin="5,0,5,0" FontSize="16"/>
+                            <Label Content="{Binding SportCathegory.Gender.FemaleOrMale}" Grid.Column="2" Margin="5,0,5,0" FontSize="16"/>
+                            <Label Content="{Binding TimeOfWon.Date}" Grid.Column="4" Margin="5,0,5,0" FontSize="16"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+
+
+
+    </ScrollViewer>
+
+
+
+
+
+
+</UserControl>

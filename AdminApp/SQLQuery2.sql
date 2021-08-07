@@ -1,0 +1,11 @@
+﻿DELETE FROM Athlets;
+DELETE FROM Countries;
+DELETE FROM Genders WHERE Id>3;
+DELETE FROM Sports WHERE Id>4;
+
+
+
+SELECT* FROM Athlets;
+SELECT* FROM Countries;
+SELECT* FROM Genders;
+SELECT* FROM Sports;
